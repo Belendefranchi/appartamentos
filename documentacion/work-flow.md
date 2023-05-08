@@ -4,7 +4,38 @@
 
 ## <img src="https://img.icons8.com/color/40/null/git.png" alt="logo git" width="40" height="40"/> Work flow - Branch
 
-- Para leer más sobre el tema: [GitFlow Workflow - Atlassian](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+## ¿ Cómo organizamos las ramas?
+
+- Vamos a partir de 3 ramas: **main**, *develop** y **release/nro-de-version**.
+
+- Para cada Sprint vamos a crear una nueva rama **realease** y a partir de ello creamos nuestras ramas para trabajar en cada issue, que comenzarán con: **feat**, **fix**, **perf**, **build**, **ci**, **docs**, **refactor**, **style**, **test**.
+
+- Vamos a tener una estructura simlar a esta:
+
+```
+O-------version 1.0.0----------------------version 1.1.0 (MAIN branch)
+|
+|--------O--------------O----------O--------------- (DEVELOP branch)
+|
+|------release/1.0.0------------------release/1.1.0 (RELEASE/nro-de-version branch)
+        |                               |
+        |-----feat/#2-header-------------
+```
+
+- Cada integrante del equipo va a ir trabajando en su rama y commiteando. A la par va a asignarse el issue corspondiente al Sprint y dejando comentarios, como también asignandose la tarea del Trello y actualizarla. Cuando esté ya listo se hace el **merge request**.
+
+- Ese merge request va a ser correjido por algún integrante del equipo, se van a hacer las correcciones necesarias. Y una vez que esté ok se hace el merge de la branch con la branch **release**. Se elimina la branch en la que se estuvo trabajando el issue.
+
+- Una vez que se finalice el Sprint todas las branch de ese Sprint deberían estar mergeadas a **release*/nro-de-version** y eliminadas (salvo que quede algo pendiente o en hold). Se debe crear un **tag** con el número de la versión. Nvelar las branch **main** y **develop** con **release**, para que tengan actualizado todo lo realizado en el Sprint. Desde **release** crear la nueva branch **release** para el próximo Sprint y eliminar la branch **release** del Sprint actual(OJO este paso de borrar que sea **una vez que tenemos niveladas las branchs main y develop**).
+
+- Para el comienzo del nuevo Sprint nuevamente cada integrante creará su branch a partir de la nueva **release**. Y se repite todo el ciclo.
+
+## :book: Para leer más sobre el tema: 
+
+- [GitFlow Workflow - Atlassian](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+
+- [Using branches - Atlassian](https://www.atlassian.com/git/tutorials/using-branches)
+
 
 ---
 
@@ -132,6 +163,10 @@ Estos serían los prefijos:
 ## ¿Cómo borro una rama?
 
 1. Ya situado en la rama que quiero borrar: `git branch -D <nombre-de-la-rama-a-borrar>`
+
+## ¿Cómo me cambio entre ramas?
+
+1. Estando en una rama y quiero ir a otra: `git checkout <nombre-de-la-rama-a-la-que-quiero-ir>`.
 
 ## ¿Cómo commiteo?
 
