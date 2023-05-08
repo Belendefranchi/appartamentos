@@ -53,7 +53,8 @@
 | [Maquetado - Versión Tablet/Mobile](https://www.canva.com/design/DAFhKUT_6XE/JSgly0lqzrcc9wqYdZVNCQ/edit?utm_content=DAFhKUT_6XE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) |
 | Prototipado funcional                                                                                                                                                                              |
 | [Tablero de Trello](https://trello.com/b/gq6AqgPc/appartamento)                                                                                                                                    |
-| [Documentación del código](https://github.com/Belendefranchi/appartamentos/documentacion) |
+| [Documentación del código](https://github.com/Belendefranchi/appartamentos/blob/main/documentacion/codigo.md) |
+| [Work flow de Git - Branch -  Buenas prácticas de commits - Comandos git](https://github.com/Belendefranchi/appartamentos/blob/main/documentacion/work-flow.md) |
 
 ---
 
@@ -155,7 +156,7 @@ Deberán desarrollar la documentación correspondiente en un archivo PDF explica
 
 Dejando las capturas de pantalla de las modificaciones y partes agregadas, las funciones usadas, declaraciones de variables y todo lo necesario para armar un detalle del trabajo realizado. Tener en cuenta colocar comentarios bandera que den pie al documento de la elaboración del trabajo y ayuden a comprender la lógica usada para el diseño.
 
-:computer: -> [en este link se puede ver la documentación](https://github.com/Belendefranchi/appartamentos/documentacion)
+:computer: -> [en este link se puede ver la documentación](https://github.com/Belendefranchi/appartamentos/blob/main/documentacion/codigo.md)
 
 
 ### <img src="https://img.icons8.com/fluency/40/null/test-passed.png" alt="test aprobado con check marks" widht="40" height="40" /> EVALUACIÓN
