@@ -2,8 +2,11 @@ import { lazy, Suspense } from 'react'
 import { Route } from 'react-router-dom'
 import { publicRoutes, privateRoutes } from './models/routes'
 import { RoutesNoMatch } from './utilities/RoutesNoMatch'
+import Header from './components/organism/header/Header'
 import Home from './pages/home/Home'
+import Footer from './components/organism/footer/Footer'
 import './App.css'
+
 
 const AboutUs = lazy(() => import('./pages/about/AboutUs'))
 const Contact = lazy(() => import('./pages/contact/Contact'))
@@ -19,7 +22,7 @@ const Favorites = lazy(() => import('./pages/favorites/Favorites'))
 function App() {
   return (
     <>
-      <div>Appartamentos</div>
+      <Header />
       <Suspense>
         <RoutesNoMatch>
           <Route path={publicRoutes.HOME} exact element={<Home />} />
@@ -41,6 +44,7 @@ function App() {
           <Route path={privateRoutes.FAVORITES} exact element={<Favorites />} />
         </RoutesNoMatch>
       </Suspense>
+      <Footer />
     </>
   )
 }
