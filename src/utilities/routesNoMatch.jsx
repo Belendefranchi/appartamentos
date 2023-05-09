@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { PageNotFound } from '../pages/pageNotFound/PageNotFound.jsx'
+import PageNotFound from '../pages/pageNotFound/PageNotFound.jsx'
 
 export const RoutesNoMatch = ({ children }) => {
   return (
