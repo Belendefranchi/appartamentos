@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Route } from 'react-router-dom'
 import { publicRoutes, privateRoutes } from './models/routes'
-import { RoutesNoMatch } from './utilities/routesNoMatch'
+import { RoutesNoMatch } from './utilities/RoutesNoMatch'
 import Home from './pages/home/Home'
 import './App.css'
 
