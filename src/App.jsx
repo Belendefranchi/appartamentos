@@ -6,6 +6,8 @@ import Header from './components/organism/header/Header'
 import Home from './pages/home/Home'
 import Footer from './components/organism/footer/Footer'
 import './App.css'
+import { sections } from './data/header.data'
+import { footers } from './data/footer.data'
 
 
 const AboutUs = lazy(() => import('./pages/about/AboutUs'))
@@ -22,7 +24,7 @@ const Favorites = lazy(() => import('./pages/favorites/Favorites'))
 function App() {
   return (
     <>
-      <Header />
+      <Header sections={sections} title="Appartamentos" />
       <Suspense>
         <RoutesNoMatch>
           <Route path={publicRoutes.HOME} exact element={<Home />} />
@@ -44,7 +46,7 @@ function App() {
           <Route path={privateRoutes.FAVORITES} exact element={<Favorites />} />
         </RoutesNoMatch>
       </Suspense>
-      <Footer />
+      <Footer footers={footers}/>
     </>
   )
 }
