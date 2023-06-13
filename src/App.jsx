@@ -1,25 +1,24 @@
-import { lazy, Suspense } from 'react'
-import { Route } from 'react-router-dom'
-import { publicRoutes, privateRoutes } from './models/routes'
-import { RoutesNoMatch } from './utilities/RoutesNoMatch'
-import Header from './components/organism/header/Header'
-import Home from './pages/home/Home'
-import Footer from './components/organism/footer/Footer'
-import './App.css'
-import { sections } from './data/header.data'
-import { footers } from './data/footer.data'
+import { lazy, Suspense } from "react";
+import { Route } from "react-router-dom";
+import { publicRoutes, privateRoutes } from "./models/routes";
+import { RoutesNoMatch } from "./utilities/RoutesNoMatch";
+import Header from "./components/organism/header/Header";
+import Home from "./pages/home/Home";
+import Footer from "./components/organism/footer/Footer";
+import "./App.css";
+import { sections } from "./data/header.data";
+import { footers } from "./data/footer.data";
 
-
-const AboutUs = lazy(() => import('./pages/about/AboutUs'))
-const Contact = lazy(() => import('./pages/contact/Contact'))
-const Search = lazy(() => import('./pages/search/Search'))
+const AboutUs = lazy(() => import("./pages/about/AboutUs"));
+const Contact = lazy(() => import("./pages/contact/Contact"));
+const Search = lazy(() => import("./pages/search/Search"));
 const TearmsAndConditions = lazy(() =>
-  import('./pages/termsConditions/TermsAndConditions')
-)
-const Login = lazy(() => import('./pages/login/Login'))
-const Register = lazy(() => import('./pages/register/Register'))
-const Detail = lazy(() => import('./pages/detail/Detail'))
-const Favorites = lazy(() => import('./pages/favorites/Favorites'))
+  import("./pages/termsConditions/TermsAndConditions")
+);
+const Login = lazy(() => import("./pages/login/Login"));
+const Register = lazy(() => import("./pages/register/Register"));
+const Detail = lazy(() => import("./pages/detail/Detail"));
+const Favorites = lazy(() => import("./pages/favorites/Favorites"));
 
 function App() {
   return (
@@ -46,9 +45,9 @@ function App() {
           <Route path={privateRoutes.FAVORITES} exact element={<Favorites />} />
         </RoutesNoMatch>
       </Suspense>
-      <Footer footers={footers}/>
+      <Footer footers={footers} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

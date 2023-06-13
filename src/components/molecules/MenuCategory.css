@@ -1,0 +1,9 @@
+.carousel {
+  height: 180px;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  object-fit: cover;
+  background-position: center;
+  position: relative;
+  margin: 0 auto;
+}

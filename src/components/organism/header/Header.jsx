@@ -6,16 +6,29 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import { useEffect } from "react";
+import { usePropertyStore } from "../../../store/useProperty";
+import { fetchSearchGeo } from "../../../service/search-geo";
 
 const Header = (props) => {
   const { sections, title } = props;
 
+  const { addProperty } = usePropertyStore()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetchSearchGeo();
+      addProperty(result);
+    };
+
+    fetchData();
+  }, []);
   return (
     <AppBar
       position="static"
-      color="default"
       elevation={0}
-      sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
+      color="inherit"
+      sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}`, paddingY: '.8rem' }}
     >
       <Container maxWidth="lg">
         <Toolbar sx={{ flexWrap: "wrap" }}>
@@ -31,6 +44,9 @@ const Header = (props) => {
                 variant="body2"
                 href={section.url}
                 sx={{ p: 1, flexShrink: 0, textDecoration: 'none' }}
+                fontSize='1rem'
+                fontWeight="bold"
+                underline="hover"
               >
                 {section.title}
               </Link>
