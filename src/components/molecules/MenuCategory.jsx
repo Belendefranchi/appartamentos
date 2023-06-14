@@ -8,13 +8,7 @@ import ImgCarrousel from '../../assets/png-clipart-taobao-lynx-home-design-banne
 
 export const MenuCategory = () => {
   return (
-    <Box
-      sx={{
-        width: '100%',
-        margin: '0 auto',
-        position: 'relative',
-      }}
-    >
+    <Box>
       <Carousel
         showArrows={true}
         showThumbs={false}

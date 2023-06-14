@@ -5,7 +5,7 @@ import React from "react";
 const Footer = ({ footers } ) => {
   return (
     <Container
-        maxWidth="lg"
+        maxWidth="xl"
         component="footer"
         sx={{
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,

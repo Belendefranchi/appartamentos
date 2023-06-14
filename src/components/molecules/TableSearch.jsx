@@ -6,8 +6,6 @@ export const TableSearch = () => {
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "5vh",
         paddingTop: "2rem",
         display: "flex",
         placeItems: "center",

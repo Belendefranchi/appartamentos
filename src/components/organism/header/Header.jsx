@@ -30,7 +30,7 @@ const Header = (props) => {
       color="inherit"
       sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}`, paddingY: '.8rem' }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Toolbar sx={{ flexWrap: "wrap" }}>
           <Typography variant="h4" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             {title}

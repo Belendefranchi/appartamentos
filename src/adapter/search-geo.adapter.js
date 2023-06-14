@@ -10,7 +10,11 @@ export const searchAdapter = (property) => {
     name: property.name,
     persons: property.persons,
     position: property.position,
-    type: property.type
+    type: property.type,
+    previewAmenities: property.previewAmenities,
+    hostThumbnail: property.hostThumbnail,
+    price: property.price,
+    rating: property.rating
   }
 
   return result

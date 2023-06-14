@@ -5,11 +5,13 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import { themeAppartamentos } from './theme/theme.js'
+import { CssBaseline } from '@mui/material'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={themeAppartamentos}>
       <BrowserRouter>
+        <CssBaseline />
         <App />
       </BrowserRouter>
     </ThemeProvider>
