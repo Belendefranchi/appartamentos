@@ -11,15 +11,20 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { login } from "../../helper/authFunction";
 
 const Login = () => {
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const email = data.get("email");
+    const password = data.get("password");
+    try {
+      const user = await login(email, password);
+      console.log(user);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
@@ -40,7 +45,7 @@ const Login = () => {
           backgroundPosition: "center",
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component='div' elevation={6} square>
+      <Grid item xs={12} sm={8} md={5} component="div" elevation={6}>
         <Box
           sx={{
             my: 8,
@@ -50,9 +55,7 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            U
-          </Avatar>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>U</Avatar>
           <Typography component="h1" variant="h5">
             Loguearse
           </Typography>
@@ -113,4 +116,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;
