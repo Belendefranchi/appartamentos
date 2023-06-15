@@ -1,9 +1,9 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
-export const BoxAmenities = ({amenities}) => {
+export const BoxAmenities = ({ amenities }) => {
   return (
-    <Grid item xs={3} key={amenities}>
+    <>
       <Box
         sx={{
           width: "100%",
@@ -17,6 +17,6 @@ export const BoxAmenities = ({amenities}) => {
       >
         <Typography variant="h5">{amenities}</Typography>
       </Box>
-    </Grid>
+    </>
   );
 };
