@@ -3,8 +3,8 @@ export const publicRoutes = {
   ABOUT_US: '/nosotros',
   CONTACT: '/contacto',
   DETAIL_WITH_ID: '/detalle',
-  LOGIN: '/login',
-  REGISTER: '/registro',
+  LOGIN: 'login',
+  REGISTER: 'registro',
   SEARCH: '/propiedades',
   TERMS_CONDITIONS: '/terminos-condiciones'
 }

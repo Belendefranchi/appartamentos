@@ -5,6 +5,7 @@ import { RoutesNoMatch } from "./utilities/RoutesNoMatch";
 import Home from "./pages/home/Home";
 import "./App.css";
 import { LayoutGeneral } from "./layout/LayoutGeneral";
+import { LayoutAuth } from "./layout/LayoutAuth";
 
 const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
@@ -43,8 +44,10 @@ function App() {
               element={<Favorites />}
             />
           </Route>
-          <Route path={publicRoutes.LOGIN} exact element={<Login />} />
-          <Route path={publicRoutes.REGISTER} exact element={<Register />} />
+          <Route path="/auth/*" element={<LayoutAuth />}>
+            <Route path={publicRoutes.LOGIN} exact element={<Login />} />
+            <Route path={publicRoutes.REGISTER} exact element={<Register />} />
+          </Route>
         </RoutesNoMatch>
       </Suspense>
     </>

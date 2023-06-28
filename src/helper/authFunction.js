@@ -1,6 +1,8 @@
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../service/firebase";
@@ -33,6 +35,27 @@ async function register(displayName, email, password) {
   }
 }
 
+async function loginGoogle() {
+  const googleProvider = new GoogleAuthProvider();
+
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+    return user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  } catch (error) {
+    console.log(error);
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  }
+}
+
 async function login(email, password) {
   try {
     const userCredential = await signInWithEmailAndPassword(
@@ -53,4 +76,4 @@ async function login(email, password) {
   }
 }
 
-export { register, login };
+export { register, login, loginGoogle };
