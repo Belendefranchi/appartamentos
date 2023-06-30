@@ -16,9 +16,6 @@ import { useAuth } from '../../store/useAuth';
 
 const Login = () => {
   const setLogin = useAuth(state => state.setLogin)
-  const auth = useAuth(state => state.auth)
-
-  console.log(auth)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
