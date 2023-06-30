@@ -11,8 +11,10 @@ import { useEffect } from "react";
 import { usePropertyStore } from "../../../store/useProperty";
 import { fetchSearchGeo } from "../../../service/search-geo";
 import { Link as LinkReactRouter } from "react-router-dom";
+import { useAuth } from "../../../store/useAuth";
 
 const Header = (props) => {
+  const auth = useAuth((state) => state.auth.authenticated);
   const { sections, title } = props;
 
   const { addProperty } = usePropertyStore();
@@ -59,22 +61,26 @@ const Header = (props) => {
           </nav>
 
           <Box sx={{ display: "flex" }} gap={1}>
-            <Button
-              component={LinkReactRouter}
-              to="/auth/login"
-              variant="contained"
-              color="secondary"
-            >
-              Login
-            </Button>
-            <Button
-              component={LinkReactRouter}
-              to="/auth/registro"
-              variant="contained"
-              color="primary"
-            >
-              Registrarse
-            </Button>
+            {auth === "not-authenticated" && (
+              <>
+                <Button
+                  component={LinkReactRouter}
+                  to="/auth/login"
+                  variant="contained"
+                  color="secondary"
+                >
+                  Login
+                </Button>
+                <Button
+                  component={LinkReactRouter}
+                  to="/auth/registro"
+                  variant="contained"
+                  color="primary"
+                >
+                  Registrarse
+                </Button>
+              </>
+            )}
           </Box>
         </Toolbar>
       </Container>

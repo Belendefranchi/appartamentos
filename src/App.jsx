@@ -34,7 +34,7 @@ function App() {
                 exact
                 element={<Register />}
               />
-              <Route path="*" replace element={<Navigate to="/dashboard" />} />
+              <Route path="*" replace element={<Navigate to="/" />} />
             </Route>
           ) : (
             <Route path="/auth/*" element={<LayoutAuth />}>
@@ -44,9 +44,10 @@ function App() {
                 exact
                 element={<Register />}
               />
-              <Route path="*" replace element={<Navigate to="/dashboard" />} />
+              <Route path="*" replace element={<Navigate to="/" />} />
             </Route>
           )}
+          <Route path="*" replace element={<Navigate to="/" />} />
           <Route path="/" element={<LayoutGeneral />}>
             <Route index element={<Home />} />
             <Route path={publicRoutes.ABOUT_US} exact element={<AboutUs />} />
