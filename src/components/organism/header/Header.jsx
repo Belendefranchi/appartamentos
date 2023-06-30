@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
   Container,
@@ -14,7 +15,7 @@ import { Link as LinkReactRouter } from "react-router-dom";
 import { useAuth } from "../../../store/useAuth";
 
 const Header = (props) => {
-  const auth = useAuth((state) => state.auth.authenticated);
+  const auth = useAuth((state) => state.auth);
   const { sections, title } = props;
 
   const { addProperty } = usePropertyStore();
@@ -61,7 +62,7 @@ const Header = (props) => {
           </nav>
 
           <Box sx={{ display: "flex" }} gap={1}>
-            {auth === "not-authenticated" && (
+            {auth.authenticated === "not-authenticated" ? (
               <>
                 <Button
                   component={LinkReactRouter}
@@ -80,6 +81,8 @@ const Header = (props) => {
                   Registrarse
                 </Button>
               </>
+            ):(
+              <Avatar url={auth.user.photo} name={auth.user.name}  />
             )}
           </Box>
         </Toolbar>
