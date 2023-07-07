@@ -1,76 +1,57 @@
-import React, { lazy, Suspense } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { publicRoutes, privateRoutes } from "./models/routes";
-import { RoutesNoMatch } from "./utilities/RoutesNoMatch";
-import Home from "./pages/home/Home";
-import "./App.css";
-import { LayoutGeneral } from "./layout/LayoutGeneral";
-import { LayoutAuth } from "./layout/LayoutAuth";
-import { useAuth } from "./store/useAuth";
-
-const AboutUs = lazy(() => import("./pages/about/AboutUs"));
-const Contact = lazy(() => import("./pages/contact/Contact"));
-const Search = lazy(() => import("./pages/search/Search"));
-const TearmsAndConditions = lazy(() =>
-  import("./pages/termsConditions/TermsAndConditions")
-);
-const Login = lazy(() => import("./pages/login/Login"));
-const Register = lazy(() => import("./pages/register/Register"));
-const Detail = lazy(() => import("./pages/detail/Detail"));
-const Favorites = lazy(() => import("./pages/favorites/Favorites"));
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import PrivateRoute from "./components/PrivateRoute";
+import ForgotPassword from "./pages/ForgotPassword";
+import Offers from "./pages/Offers";
+import Header from "./components/Header";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CreateListing from "./pages/CreateListing";
+import EditListing from "./pages/EditListing";
+import Listing from "./pages/Listing";
+import Category from "./pages/Category";
 function App() {
-  const auth = useAuth((state) => state.auth.authenticated);
-
   return (
     <>
-      <Suspense>
-        <RoutesNoMatch>
-          {auth === "authenticated" ? (
-            <Route path="/private/*" element={<LayoutAuth />}>
-              <Route path={publicRoutes.LOGIN} exact element={<Login />} />
-              <Route
-                path={publicRoutes.REGISTER}
-                exact
-                element={<Register />}
-              />
-              <Route path="*" replace element={<Navigate to="/" />} />
-            </Route>
-          ) : (
-            <Route path="/auth/*" element={<LayoutAuth />}>
-              <Route path={publicRoutes.LOGIN} exact element={<Login />} />
-              <Route
-                path={publicRoutes.REGISTER}
-                exact
-                element={<Register />}
-              />
-              <Route path="*" replace element={<Navigate to="/" />} />
-            </Route>
-          )}
-          <Route path="*" replace element={<Navigate to="/" />} />
-          <Route path="/" element={<LayoutGeneral />}>
-            <Route index element={<Home />} />
-            <Route path={publicRoutes.ABOUT_US} exact element={<AboutUs />} />
-            <Route path={publicRoutes.CONTACT} exact element={<Contact />} />
-            <Route path={publicRoutes.SEARCH} exact element={<Search />} />
-            <Route
-              path={publicRoutes.TERMS_CONDITIONS}
-              exact
-              element={<TearmsAndConditions />}
-            />
-            <Route
-              path={`${publicRoutes.DETAIL_WITH_ID}/:id`}
-              exact
-              element={<Detail />}
-            />
-            <Route
-              path={privateRoutes.FAVORITES}
-              exact
-              element={<Favorites />}
-            />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<PrivateRoute />}>
+            <Route path="/profile" element={<Profile />} />
           </Route>
-        </RoutesNoMatch>
-      </Suspense>
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="/category/:categoryName/:listingId"
+            element={<Listing />}
+          />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/category/:categoryName" element={<Category />} />
+          <Route path="create-listing" element={<PrivateRoute />}>
+            <Route path="/create-listing" element={<CreateListing />} />
+          </Route>
+          <Route path="edit-listing" element={<PrivateRoute />}>
+            <Route path="/edit-listing/:listingId" element={<EditListing />} />
+          </Route>
+        </Routes>
+      </Router>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 }
