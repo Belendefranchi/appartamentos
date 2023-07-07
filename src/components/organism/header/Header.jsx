@@ -1,44 +1,90 @@
 import {
   AppBar,
+  Avatar,
+  Box,
   Button,
   Container,
-  Link,
+  Link as LinkMaterial,
   Toolbar,
   Typography,
 } from "@mui/material";
+import { useEffect } from "react";
+import { usePropertyStore } from "../../../store/useProperty";
+import { fetchSearchGeo } from "../../../service/search-geo";
+import { Link as LinkReactRouter } from "react-router-dom";
+import { useAuth } from "../../../store/useAuth";
 
 const Header = (props) => {
+  const auth = useAuth((state) => state.auth);
   const { sections, title } = props;
 
+  const { addProperty } = usePropertyStore();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetchSearchGeo();
+      addProperty(result);
+    };
+
+    fetchData();
+  }, []);
   return (
     <AppBar
       position="static"
-      color="default"
       elevation={0}
-      sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
+      color="inherit"
+      sx={{
+        borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+        paddingY: ".8rem",
+      }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Toolbar sx={{ flexWrap: "wrap" }}>
           <Typography variant="h4" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             {title}
           </Typography>
           <nav>
             {sections.map((section) => (
-              <Link
+              <LinkMaterial
                 color="inherit"
                 noWrap
                 key={section.title}
                 variant="body2"
                 href={section.url}
-                sx={{ p: 1, flexShrink: 0, textDecoration: 'none' }}
+                sx={{ p: 1, flexShrink: 0, textDecoration: "none" }}
+                fontSize="1rem"
+                fontWeight="bold"
+                underline="hover"
               >
                 {section.title}
-              </Link>
+              </LinkMaterial>
             ))}
           </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
+
+          <Box sx={{ display: "flex" }} gap={1}>
+            {auth.authenticated === "not-authenticated" ? (
+              <>
+                <Button
+                  component={LinkReactRouter}
+                  to="/auth/login"
+                  variant="contained"
+                  color="secondary"
+                >
+                  Login
+                </Button>
+                <Button
+                  component={LinkReactRouter}
+                  to="/auth/registro"
+                  variant="contained"
+                  color="primary"
+                >
+                  Registrarse
+                </Button>
+              </>
+            ):(
+              <Avatar url={auth.user.photo} name={auth.user.name}  />
+            )}
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

@@ -1,10 +1,10 @@
 import { createTheme } from '@mui/material'
 
 const COLOR = {
-  PRIMARY: '#25d366',
+  PRIMARY: '#000',
   SECONDARY: '#ff385c',
   LIGHT_SHADOW: '#f7f7f9',
-  DARK_SHADOW: '#d9d9d9'
+  DARK_SHADOW: '#000'
 }
 
 export const themeAppartamentos = createTheme({
